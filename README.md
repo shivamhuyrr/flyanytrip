@@ -43,6 +43,3 @@ Just open `index.html` in a browser, or serve locally:
 npx serve .
 ```
 
-## 📄 License
-
-© 2026 FlyAnyTrip. All rights reserved.
