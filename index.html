@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Book cheap flights worldwide with FlyAnyTrip. Zero convenience fee, best prices guaranteed. Authorized partner of Trip.com, Air India, IndiGo & more.">
+    <title>FlyAnyTrip — Book Cheap Flights Worldwide | Zero Convenience Fee</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='28' font-size='28'%3E✈️%3C/text%3E%3C/svg%3E">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- NAVIGATION -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="#" class="nav-logo">
+                <img src="images/anytrip-logo.png" alt="AnyTrip" class="nav-logo-img">
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li class="nav-dropdown-trigger">
+                    <a href="#" class="menu-trigger">Menu <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 5L6 8L9 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
+                    <ul class="nav-dropdown nav-mega">
+                        <li><a href="#">
+                            <span class="dd-icon">👤</span>
+                            <span class="dd-text"><strong>AGENT LOGIN</strong><small>Log-In To Book Tickets</small></span>
+                        </a></li>
+                        <li><a href="#">
+                            <span class="dd-icon">🔍</span>
+                            <span class="dd-text"><strong>SEARCH BOX</strong><small>Integrate FlyAnyTrip</small></span>
+                        </a></li>
+                        <li><a href="#">
+                            <span class="dd-icon">🚂</span>
+                            <span class="dd-text"><strong>TRAIN BOOKING</strong><small>Book Your Train Tickets</small></span>
+                        </a></li>
+                        <li><a href="#">
+                            <span class="dd-icon">📋</span>
+                            <span class="dd-text"><strong>PNR CHECKING</strong><small>Check Your PNR</small></span>
+                        </a></li>
+                        <li><a href="#">
+                            <span class="dd-icon">🚆</span>
+                            <span class="dd-text"><strong>LIVE TRAIN STATUS</strong><small>Check Your Train Status</small></span>
+                        </a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Holiday Packages</a></li>
+                <li><a href="#reviews">Rate-Us</a></li>
+                <li><a href="#">Fly Club</a></li>
+                <li><a href="#contact">Contact-Us</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="btn-outline" id="loginBtn">Sign In</button>
+                <button class="btn-primary nav-cta">Download App</button>
+            </div>
+            <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <div class="hero-promo-badge">
+                <span class="promo-dot"></span>
+                🎉 12.5% OFF on Air India Flights — Limited Time!
+            </div>
+            <h1 class="hero-title">Book Your Next Trip<br><span class="gradient-text">with Fly<span class="brand-any">Any</span>Trip<span class="red-dot">.</span><span class="red-dot">.</span></span></h1>
+            <p class="hero-subtitle">Fly anywhere in the world. Zero convenience fee. Transparent pricing. Trusted by 5,000+ happy travelers.</p>
+
+            <!-- SEARCH FORM -->
+            <div class="search-card" id="searchCard">
+                <div class="search-tabs">
+                    <button class="search-tab active" data-tab="oneway">One Way</button>
+                    <button class="search-tab" data-tab="return">Round Trip</button>
+                    <button class="search-tab" data-tab="multicity">Multi-City</button>
+                </div>
+                <div class="search-form">
+                    <div class="search-field">
+                        <label>From</label>
+                        <input type="text" placeholder="Delhi (DEL)" id="fromCity">
+                        <span class="field-icon">✈️</span>
+                    </div>
+                    <button class="swap-btn" id="swapBtn" aria-label="Swap cities">⇄</button>
+                    <div class="search-field">
+                        <label>To</label>
+                        <input type="text" placeholder="Mumbai (BOM)" id="toCity">
+                        <span class="field-icon">📍</span>
+                    </div>
+                    <div class="search-field">
+                        <label>Departure</label>
+                        <input type="date" id="departDate">
+                        <span class="field-icon">📅</span>
+                    </div>
+                    <div class="search-field return-field" id="returnField">
+                        <label>Return</label>
+                        <input type="date" id="returnDate">
+                        <span class="field-icon">📅</span>
+                    </div>
+                    <div class="search-field small pax-field">
+                        <label>Travelers</label>
+                        <div class="pax-trigger" id="paxTrigger">
+                            <span id="paxSummary">1 Adult</span>
+                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 5L6 8L9 5" stroke="#6B7280" stroke-width="1.5" stroke-linecap="round"/></svg>
+                        </div>
+                        <div class="pax-dropdown" id="paxDropdown">
+                            <div class="pax-row">
+                                <div class="pax-label"><strong>Adults</strong><span>12+ years</span></div>
+                                <div class="pax-controls">
+                                    <button class="pax-btn" data-type="adults" data-action="minus">−</button>
+                                    <span class="pax-count" id="adultCount">1</span>
+                                    <button class="pax-btn pax-btn-plus" data-type="adults" data-action="plus">+</button>
+                                </div>
+                            </div>
+                            <div class="pax-row">
+                                <div class="pax-label"><strong>Children</strong><span>2–11 years</span></div>
+                                <div class="pax-controls">
+                                    <button class="pax-btn" data-type="children" data-action="minus">−</button>
+                                    <span class="pax-count" id="childCount">0</span>
+                                    <button class="pax-btn pax-btn-plus" data-type="children" data-action="plus">+</button>
+                                </div>
+                            </div>
+                            <div class="pax-row">
+                                <div class="pax-label"><strong>Infants</strong><span>Under 2</span></div>
+                                <div class="pax-controls">
+                                    <button class="pax-btn" data-type="infants" data-action="minus">−</button>
+                                    <span class="pax-count" id="infantCount">0</span>
+                                    <button class="pax-btn pax-btn-plus" data-type="infants" data-action="plus">+</button>
+                                </div>
+                            </div>
+                            <button class="pax-done" id="paxDone">Done</button>
+                        </div>
+                    </div>
+                    <div class="search-field small">
+                        <label>Class</label>
+                        <select id="travelClass">
+                            <option>Economy</option>
+                            <option>Premium</option>
+                            <option>Business</option>
+                        </select>
+                    </div>
+                    <button class="search-btn" id="searchBtn">
+                        Search Flights
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                </div>
+                <div class="search-extras">
+                    <label class="checkbox-label"><input type="checkbox"> Non-stop flights only</label>
+                    <label class="checkbox-label"><input type="checkbox"> Flexible dates (±3 days)</label>
+                    <label class="checkbox-label"><input type="checkbox"> Student fare</label>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRUST STRIP -->
+    <section class="trust-strip">
+        <div class="container trust-container">
+            <div class="trust-item">
+                <span class="trust-icon">⭐</span>
+                <div><strong>4.9/5</strong> Trustpilot Rating</div>
+            </div>
+            <div class="trust-divider"></div>
+            <div class="trust-item">
+                <span class="trust-icon">👥</span>
+                <div><strong>5,000+</strong> Happy Customers</div>
+            </div>
+            <div class="trust-divider"></div>
+            <div class="trust-item">
+                <span class="trust-icon">🤝</span>
+                <div><strong>Trip.com</strong> Authorized Partner</div>
+            </div>
+            <div class="trust-divider"></div>
+            <div class="trust-item">
+                <span class="trust-icon">💰</span>
+                <div><strong>Zero</strong> Convenience Fee</div>
+            </div>
+            <div class="trust-divider"></div>
+            <div class="trust-item">
+                <span class="trust-icon">🔒</span>
+                <div><strong>100%</strong> Secure Payments</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY CHOOSE US -->
+    <section class="usp-section" id="features">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Why FlyAnyTrip?</span>
+                <h2>Travel Smarter, Not Harder</h2>
+                <p>AnyTrip: Redefining Best-in-Class Service — Everything you need for the perfect trip.</p>
+            </div>
+            <div class="usp-grid">
+                <div class="usp-card">
+                    <div class="usp-icon-box green">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+                    </div>
+                    <h3>Value for Money</h3>
+                    <p>AnyTrip offers competitive pricing and exceptional value, making travel more accessible without compromising on quality. Our zero convenience fee policy ensures you save on every booking.</p>
+                </div>
+                <div class="usp-card">
+                    <div class="usp-icon-box blue">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    </div>
+                    <h3>Personalized Touch</h3>
+                    <p>Understanding that every traveler is unique, AnyTrip goes above and beyond to tailor experiences to individual preferences, budgets, and travel styles for a truly custom journey.</p>
+                </div>
+                <div class="usp-card">
+                    <div class="usp-icon-box orange">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+                    </div>
+                    <h3>Seamless Experience</h3>
+                    <p>The platform's user-friendly interface is a testament to AnyTrip's focus on convenience and smooth navigation. Book flights, track PNR, and manage trips — all in one place.</p>
+                </div>
+                <div class="usp-card">
+                    <div class="usp-icon-box purple">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 18v-6a9 9 0 0118 0v6"/><path d="M21 19a2 2 0 01-2 2h-1a2 2 0 01-2-2v-3a2 2 0 012-2h3zM3 19a2 2 0 002 2h1a2 2 0 002-2v-3a2 2 0 00-2-2H3z"/></svg>
+                    </div>
+                    <h3>24/7 Friendly Support</h3>
+                    <p>AnyTrip's customer service team is renowned for its responsiveness and dedication. Available 24/7, our travel experts are always just a call or chat away to assist you.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRENDING DEALS -->
+    <section class="deals-section" id="deals">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">🔥 Hot Deals</span>
+                <h2>Trending Flight Deals</h2>
+                <p>Grab these limited-time domestic & international fares before they're gone.</p>
+            </div>
+            <div class="deals-grid">
+                <div class="deal-card">
+                    <div class="deal-route">
+                        <div class="deal-city"><span class="city-code">DEL</span><span class="city-name">Delhi</span></div>
+                        <div class="deal-arrow"><svg width="40" height="20" viewBox="0 0 40 20"><path d="M0 10H35M35 10L28 4M35 10L28 16" stroke="#0052CC" stroke-width="2" stroke-linecap="round"/></svg></div>
+                        <div class="deal-city"><span class="city-code">DXB</span><span class="city-name">Dubai</span></div>
+                    </div>
+                    <div class="deal-info">
+                        <span class="deal-airline">Air India • Non-stop</span>
+                        <span class="deal-duration">3h 30m</span>
+                    </div>
+                    <div class="deal-bottom">
+                        <div class="deal-price">₹12,499 <span class="deal-orig">₹21,000</span></div>
+                        <button class="btn-deal">Book Now</button>
+                    </div>
+                    <div class="deal-badge">40% OFF</div>
+                </div>
+                <div class="deal-card">
+                    <div class="deal-route">
+                        <div class="deal-city"><span class="city-code">BOM</span><span class="city-name">Mumbai</span></div>
+                        <div class="deal-arrow"><svg width="40" height="20" viewBox="0 0 40 20"><path d="M0 10H35M35 10L28 4M35 10L28 16" stroke="#0052CC" stroke-width="2" stroke-linecap="round"/></svg></div>
+                        <div class="deal-city"><span class="city-code">BKK</span><span class="city-name">Bangkok</span></div>
+                    </div>
+                    <div class="deal-info">
+                        <span class="deal-airline">IndiGo • Non-stop</span>
+                        <span class="deal-duration">4h 45m</span>
+                    </div>
+                    <div class="deal-bottom">
+                        <div class="deal-price">₹9,899 <span class="deal-orig">₹16,500</span></div>
+                        <button class="btn-deal">Book Now</button>
+                    </div>
+                    <div class="deal-badge">38% OFF</div>
+                </div>
+                <div class="deal-card">
+                    <div class="deal-route">
+                        <div class="deal-city"><span class="city-code">DEL</span><span class="city-name">Delhi</span></div>
+                        <div class="deal-arrow"><svg width="40" height="20" viewBox="0 0 40 20"><path d="M0 10H35M35 10L28 4M35 10L28 16" stroke="#0052CC" stroke-width="2" stroke-linecap="round"/></svg></div>
+                        <div class="deal-city"><span class="city-code">LHR</span><span class="city-name">London</span></div>
+                    </div>
+                    <div class="deal-info">
+                        <span class="deal-airline">Vistara • Non-stop</span>
+                        <span class="deal-duration">9h 15m</span>
+                    </div>
+                    <div class="deal-bottom">
+                        <div class="deal-price">₹28,999 <span class="deal-orig">₹48,000</span></div>
+                        <button class="btn-deal">Book Now</button>
+                    </div>
+                    <div class="deal-badge">42% OFF</div>
+                </div>
+                <div class="deal-card">
+                    <div class="deal-route">
+                        <div class="deal-city"><span class="city-code">BLR</span><span class="city-name">Bangalore</span></div>
+                        <div class="deal-arrow"><svg width="40" height="20" viewBox="0 0 40 20"><path d="M0 10H35M35 10L28 4M35 10L28 16" stroke="#0052CC" stroke-width="2" stroke-linecap="round"/></svg></div>
+                        <div class="deal-city"><span class="city-code">SIN</span><span class="city-name">Singapore</span></div>
+                    </div>
+                    <div class="deal-info">
+                        <span class="deal-airline">AirAsia • Non-stop</span>
+                        <span class="deal-duration">5h 10m</span>
+                    </div>
+                    <div class="deal-bottom">
+                        <div class="deal-price">₹8,499 <span class="deal-orig">₹14,000</span></div>
+                        <button class="btn-deal">Book Now</button>
+                    </div>
+                    <div class="deal-badge">35% OFF</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- POPULAR DESTINATIONS -->
+    <section class="destinations-section" id="destinations">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">✨ Explore the World</span>
+                <h2>Popular Destinations</h2>
+                <p>Discover breathtaking places handpicked for your next adventure.</p>
+            </div>
+            <div class="dest-grid">
+                <div class="dest-card dest-large" id="destDubai">
+                    <div class="dest-overlay"></div>
+                    <div class="dest-content">
+                        <span class="dest-tag">Trending</span>
+                        <h3>Dubai</h3>
+                        <p>Flights from <strong>₹12,499</strong></p>
+                    </div>
+                </div>
+                <div class="dest-card" id="destBangkok">
+                    <div class="dest-overlay"></div>
+                    <div class="dest-content">
+                        <h3>Bangkok</h3>
+                        <p>From <strong>₹9,899</strong></p>
+                    </div>
+                </div>
+                <div class="dest-card" id="destLondon">
+                    <div class="dest-overlay"></div>
+                    <div class="dest-content">
+                        <h3>London</h3>
+                        <p>From <strong>₹28,999</strong></p>
+                    </div>
+                </div>
+                <div class="dest-card" id="destSingapore">
+                    <div class="dest-overlay"></div>
+                    <div class="dest-content">
+                        <h3>Singapore</h3>
+                        <p>From <strong>₹8,499</strong></p>
+                    </div>
+                </div>
+                <div class="dest-card" id="destBali">
+                    <div class="dest-overlay"></div>
+                    <div class="dest-content">
+                        <h3>Bali</h3>
+                        <p>From <strong>₹15,999</strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="reviews-section" id="reviews">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">💬 Customer Love</span>
+                <h2>What Our Travelers Say</h2>
+                <p>Rated <strong>4.9/5</strong> on Trustpilot — 5,000+ happy customers and counting.</p>
+            </div>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <p>"Booked my Goa trip in under 2 minutes. The price was exactly what they showed — no hidden fees at all. Will use FlyAnyTrip every time!"</p>
+                    <div class="review-author">
+                        <div class="author-avatar" style="background:#FF6B35;">R</div>
+                        <div><strong>Rahul Sharma</strong><span>Delhi → Goa</span></div>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <p>"Amazing customer support! Had an issue with my booking and they resolved it within 10 minutes. Truly 24/7 service."</p>
+                    <div class="review-author">
+                        <div class="author-avatar" style="background:#0052CC;">P</div>
+                        <div><strong>Priya Patel</strong><span>Mumbai → Jaipur</span></div>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <p>"Best prices I've found anywhere. Saved ₹1,500 compared to MakeMyTrip on the same IndiGo flight. Highly recommend!"</p>
+                    <div class="review-author">
+                        <div class="author-avatar" style="background:#10B981;">A</div>
+                        <div><strong>Amit Verma</strong><span>Bangalore → Chennai</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS BAR -->
+    <section class="stats-section">
+        <div class="container stats-grid">
+            <div class="stat-item">
+                <span class="stat-number" data-target="3000">0</span>+
+                <span class="stat-label">Global Destinations</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" data-target="5000">0</span>+
+                <span class="stat-label">Happy Travelers</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" data-target="50">0</span>+
+                <span class="stat-label">Airline Partners</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" data-target="24">0</span>/7
+                <span class="stat-label">Customer Support</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- APP DOWNLOAD -->
+    <section class="app-section" id="app">
+        <div class="container app-container">
+            <div class="app-text">
+                <span class="section-tag">📱 Get the App</span>
+                <h2>Download FlyAnyTrip App</h2>
+                <p>Get <strong>FLAT 15% OFF</strong> on all domestic flights when you book via our app. Exclusive app-only deals, instant notifications, and faster bookings.</p>
+                <div class="app-features">
+                    <div class="app-feature">✅ Exclusive app-only deals</div>
+                    <div class="app-feature">✅ Instant price drop alerts</div>
+                    <div class="app-feature">✅ Manage bookings on the go</div>
+                </div>
+                <div class="app-buttons">
+                    <a href="#" class="app-badge" aria-label="Get it on Google Play">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M3 20.5V3.5C3 2.91 3.34 2.39 3.84 2.15L13.69 12L3.84 21.85C3.34 21.61 3 21.09 3 20.5ZM16.81 15.12L6.05 21.34L14.54 12.85L16.81 15.12ZM20.16 10.81C20.5 11.08 20.75 11.5 20.75 12C20.75 12.5 20.5 12.92 20.16 13.19L17.89 14.5L15.39 12L17.89 9.5L20.16 10.81ZM6.05 2.66L16.81 8.88L14.54 11.15L6.05 2.66Z"/></svg>
+                        <div><small>GET IT ON</small><strong>Google Play</strong></div>
+                    </a>
+                </div>
+            </div>
+            <div class="app-visual">
+                <div class="phone-mockup">
+                    <div class="phone-screen">
+                        <div class="phone-header">FlyAnyTrip</div>
+                        <div class="phone-search">🔍 Search flights...</div>
+                        <div class="phone-deal">DEL → GOA <strong>₹2,499</strong></div>
+                        <div class="phone-deal">BOM → JAI <strong>₹2,199</strong></div>
+                        <div class="phone-deal">BLR → COK <strong>₹1,899</strong></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section class="faq-section" id="faq">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">❓ Got Questions?</span>
+                <h2>Frequently Asked Questions</h2>
+                <p>Everything you need to know about booking with FlyAnyTrip.</p>
+            </div>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>What is the convenience fee on FlyAnyTrip?</span>
+                        <svg class="faq-chevron" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8L10 13L15 8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Absolutely zero! Unlike other platforms, FlyAnyTrip charges <strong>zero convenience fee</strong> on all flight bookings. The price you see is exactly what you pay — no hidden charges, no surprises.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>How do I get the 12.5% discount on Air India flights?</span>
+                        <svg class="faq-chevron" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8L10 13L15 8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>The 12.5% discount on Air India flights is automatically applied at checkout. Simply search for Air India flights, and the discounted fare will be shown. No coupon code required.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Can I book international flights on FlyAnyTrip?</span>
+                        <svg class="faq-chevron" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8L10 13L15 8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes! FlyAnyTrip covers <strong>3,000+ destinations worldwide</strong> across 50+ airline partners including Emirates, Singapore Airlines, Thai Airways, and more. Book domestic and international with the same great pricing.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>What payment methods do you accept?</span>
+                        <svg class="faq-chevron" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8L10 13L15 8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>We accept all major payment methods — Credit/Debit cards (Visa, Mastercard, RuPay), UPI (GPay, PhonePe, Paytm), Net Banking, and EMI options. All transactions are 100% SSL secured and PCI compliant.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>What is your cancellation and refund policy?</span>
+                        <svg class="faq-chevron" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8L10 13L15 8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Cancellation policies depend on the airline. FlyAnyTrip charges <strong>zero cancellation fee</strong> from our end — you only pay the airline's cancellation charges. Refunds are processed within 5–7 business days.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Is FlyAnyTrip an authorized travel agency?</span>
+                        <svg class="faq-chevron" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8L10 13L15 8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes, FlyAnyTrip is an authorized ticketing partner of <strong>Trip.com</strong> and works directly with airlines like Air India, IndiGo, Emirates, and Singapore Airlines. We are a fully licensed and verified travel agency.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEWSLETTER SECTION -->
+    <section class="newsletter-section">
+        <div class="container">
+            <div class="newsletter-card">
+                <div class="newsletter-content">
+                    <div class="newsletter-icon">✉️</div>
+                    <h2>Get Exclusive Deals in Your Inbox</h2>
+                    <p>Subscribe to our newsletter and never miss out on flash sales, price drops, and exclusive travel deals. Join 10,000+ smart travelers.</p>
+                    <form class="newsletter-form" id="newsletterForm">
+                        <div class="newsletter-input-wrap">
+                            <input type="email" placeholder="Enter your email address" required id="newsletterEmail">
+                            <button type="submit" class="newsletter-btn">Subscribe →</button>
+                        </div>
+                        <span class="newsletter-note">🔒 No spam, ever. Unsubscribe anytime.</span>
+                    </form>
+                </div>
+                <div class="newsletter-visual">
+                    <div class="nl-float nl-float-1">✈️</div>
+                    <div class="nl-float nl-float-2">🌍</div>
+                    <div class="nl-float nl-float-3">🎯</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- FOOTER -->
+    <footer class="footer" id="contact">
+        <div class="container footer-grid">
+            <div class="footer-col footer-brand">
+                <a href="#" class="footer-logo">
+                    <img src="images/anytrip-logo.png" alt="AnyTrip" class="footer-logo-img">
+                </a>
+                <p>We make your dream more beautiful &amp; enjoyable with lots of happiness.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook">f</a>
+                    <a href="#" aria-label="LinkedIn">in</a>
+                    <a href="#" aria-label="Google">G+</a>
+                    <a href="#" aria-label="Twitter">𝕏</a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Web3booking(W3B)</h4>
+                <ul>
+                    <li><a href="#">About Token</a></li>
+                    <li><a href="#">Chain-Explore</a></li>
+                    <li><a href="#">How W3B work</a></li>
+                    <li><a href="#">DAPI</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Operational Countries</h4>
+                <ul>
+                    <li><a href="#">India</a></li>
+                    <li><a href="#">Nigeria</a></li>
+                    <li><a href="#">Tanzania</a></li>
+                    <li><a href="#">Mali</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Anytrip</h4>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Join AnyTrip</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-col footer-partner">
+                <h4>Partner With</h4>
+                <div class="partner-brand">
+                    <span class="trip-com-logo">Tr<span class="trip-dot">i</span>p.com</span>
+                    <span class="partner-sub">Authorized ticketing partner</span>
+                </div>
+                <div class="footer-airlines">
+                    <img src="images/air-india.png" alt="Air India" class="airline-logo">
+                    <img src="images/indigo.png" alt="IndiGo" class="airline-logo">
+                    <img src="images/vietjet.png" alt="Vietjet Air" class="airline-logo">
+                </div>
+                <a href="#" class="trustpilot-badge">
+                    Review us on <span class="tp-star">★</span> Trustpilot
+                </a>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>© 2026 FlyAnyTrip. All rights reserved. Design by AnyTrip.Tech</p>
+            <div class="footer-badges">
+                <span>🔒 SSL Secured</span>
+                <span>💳 PCI Compliant</span>
+                <span>⭐ Trustpilot Verified</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
